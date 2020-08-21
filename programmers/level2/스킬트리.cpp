@@ -31,4 +31,35 @@ int solution(string skill, vector<string> skill_trees) {
 
 /* 
 	남의 풀이
+	먼저 skill_trees 중에서 skill에 포함된 문자들만 뽑아서 vector에 넣었다.
+	이때 skill의 문자열 순서로 비교했다는 것이 키 포인트!!
+	그리고 이를 skill과 비교하면서 순서가 일치하는 경우에만 answer를 증가시켰다.
  */
+#include <string>
+#include <vector>
+using namespace std;
+
+int solution(string skill, vector<string> skill_trees) {
+	int answer = 0;
+	for (int i = 0; i < skill_trees.size(); i++) {
+		vector<char> compare;
+
+		for (int k = 0; k < skill_trees[i].size(); k++) {
+			for (int j = 0; j < skill.size(); j++) {
+				if (skill[j] == skill_trees[i][k]) {
+					char tmp = skill[j];
+					compare.push_back(tmp);
+				}
+			}
+		}
+		bool check = true;;
+		for (int c = 0; c < compare.size(); c++) {
+			if (skill[c] != compare[c]) {
+				check = false;
+			}
+		}
+		if (check)answer++;
+	}
+
+	return answer;
+}
