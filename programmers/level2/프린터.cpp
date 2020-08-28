@@ -43,7 +43,30 @@ int solution(vector<int> priorities, int location) {
 
 /* 
 	남의 풀이
-	먼저 skill_trees 중에서 skill에 포함된 문자들만 뽑아서 vector에 넣었다.
-	이때 skill의 문자열 순서로 비교했다는 것이 키 포인트!!
-	그리고 이를 skill과 비교하면서 순서가 일치하는 경우에만 answer를 증가시켰다.
+	max_element(vector.begin(),vector.end()) : 최대값을 가리키는 포인터를 반환한다.
  */
+#include <algorithm>
+#include <string>
+#include <vector>
+using namespace std;
+
+int solution(vector<int> priorities, int location) {
+    int answer = 0;
+    int max = *max_element(priorities.begin(), priorities.end());
+    while (true)
+    {
+        for (int i = 0; i < priorities.size(); ++i)
+        {
+            if (priorities[i] == max)
+            {
+                ++answer;
+
+                if (i == location)
+                    return answer;
+
+                priorities[i] = 0;
+                max = *max_element(priorities.begin(), priorities.end());
+            }
+        }
+    }
+}
