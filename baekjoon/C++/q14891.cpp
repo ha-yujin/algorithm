@@ -5,8 +5,7 @@
 using namespace std;
 
 deque <int> a[4];
-bool visit[4];
-
+bool visit[4]
 // 톱니바퀴 회전
 void turn(int idx, int dir) {
 
