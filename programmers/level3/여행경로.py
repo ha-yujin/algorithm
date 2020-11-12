@@ -2,10 +2,10 @@ from collections import defaultdict
 def solution(tickets):
 
     routes = dict()
-    test = defaultdict(list)
-    for k, v in tickets:
-        test[k].append(v)
-    print(test)
+    # test = defaultdict(list)
+    # for k, v in tickets:
+    #     test[k].append(v)
+
     for start, end in tickets:
         routes[start] = routes.get(start, []) + [end]  
 

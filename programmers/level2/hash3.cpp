@@ -1,11 +1,3 @@
-// level2 - À§Àå
-/*
-   º» ¹®Á¦ÀÇ ÀÇµµ´Â ÇØ½Ã¸¦ »ç¿ëÇÏ´Â °ÍÀÌ´Ù.
-   mySol) ¸ÕÀú ¸ğµç ¿ÊÀÇ Á¶ÇÕ¼ö¸¦ °è»êÇÒ ¼ö ÀÖ´Â ¹æ¹ıÀ» ¼öÇĞÀûÀ¸·Î »ı°¢ÇØº¸¾Ò´Ù.
-   (¿ÊA Á¾·ù+1) * (¿ÊB Á¾·ù+1) *... -1À» ÇÏ¸é ÀüÃ¼ Á¶ÇÕÀÇ ¼ö°¡ ³ª¿Â´Ù.
-   ÀÌ¸¦ ±¸ÇöÇÏ±â À§ÇØ ÇÊ¿äÇÑ °ÍÀº ¿Ê Á¾·ùº° ÀÇ»óÀÇ ¼öÀÌ´Ù.
-   µû¶ó¼­ ÀÌ¸¦ À§ÇØ map ÄÁÅ×ÀÌ³Ê¸¦ ÀÌ¿ëÇØ key¸¦ ¿ÊÀÇ Á¾·ù, value¸¦ °³¼ö·Î ÀúÀåÇß´Ù.
-*/
 #include <string>
 #include <vector>
 #include <map>
@@ -25,3 +17,16 @@ int solution(vector<vector<string>> clothes) {
 	answer -= 1;
 	return answer;
 }
+
+// íŒŒì´ì¬
+from collections import defaultdict
+
+def solution(clothes):
+	answer = 1
+	d = defaultdict(int)
+	for x in clothes:
+		d[x[1]]+=1
+
+	for v in d.values():
+		answer*=(v+1)
+	return answer-1
